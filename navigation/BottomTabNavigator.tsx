@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -24,6 +24,7 @@ export default function BottomTabNavigator() {
                 name="Home"
                 component={TabOneNavigator}
                 options={{
+                    tabBarLabelStyle: { marginBottom: 5 },
                     headerShown: false,
                     tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
                 }}
@@ -32,6 +33,8 @@ export default function BottomTabNavigator() {
                 name="ComingSoon"
                 component={TabTwoNavigator}
                 options={{
+                    tabBarLabel:'Coming Soon',
+                    tabBarLabelStyle: {marginBottom:5},
                     headerShown:false,
                     tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={24} color={color} />,
                 }}
@@ -40,6 +43,7 @@ export default function BottomTabNavigator() {
                 name="Search"
                 component={TabTwoNavigator}
                 options={{
+                    tabBarLabelStyle: { marginBottom: 5 },
                     headerShown: false,
                     tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
                 }}
@@ -48,6 +52,7 @@ export default function BottomTabNavigator() {
                 name="Downloads"
                 component={TabTwoNavigator}
                 options={{
+                    tabBarLabelStyle: { marginBottom: 5 },
                     headerShown: false,
                     tabBarIcon: ({ color }) => <AntDesign name="download" size={24} color={color} />,
                 }}
@@ -65,7 +70,7 @@ function TabOneNavigator() {
         <HomeStack.Navigator>
             <HomeStack.Screen
                 name="HomeScreen"
-                component={TabOneScreen}
+                component={HomeScreen}
                 options={{ headerShown: false}}
             />
         </HomeStack.Navigator>
