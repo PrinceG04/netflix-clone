@@ -1,4 +1,4 @@
-import { AntDesign, MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { AntDesign, MaterialIcons, Ionicons, Octicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { createStackNavigator } from '@react-navigation/stack';
@@ -7,6 +7,7 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
+import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 
 
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -54,7 +55,7 @@ export default function BottomTabNavigator() {
                 options={{
                     tabBarLabelStyle: { marginBottom: 5 },
                     headerShown: false,
-                    tabBarIcon: ({ color }) => <AntDesign name="download" size={24} color={color} />,
+                    tabBarIcon: ({ color }) => <Octicons name="download" size={24} color={color} />,
                 }}
             />
         </BottomTab.Navigator>
@@ -70,7 +71,12 @@ function TabOneNavigator() {
         <HomeStack.Navigator>
             <HomeStack.Screen
                 name="HomeScreen"
-                component={HomeScreen}
+                component={MovieDetailsScreen}
+                options={{ title:'Movie Details'}}
+            />
+            <HomeStack.Screen
+                name="MovieDetailsScreen"
+                component={MovieDetailsScreen}
                 options={{ headerShown: false}}
             />
         </HomeStack.Navigator>
