@@ -1,24 +1,19 @@
 import { View, Text } from '../../components/Themed';
 import React from 'react';
 import styles from './style';
-import {Image} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import { Octicons } from '@expo/vector-icons';
+import { Episode } from '../../types';
 
 interface EpisodeItemProps{
-    episode:{
-        id: string,
-        title: string,
-        poster: string,
-        duration: string,
-        plot: string,
-        video: string,
-    }
+    episode:Episode,
+    onPress: (episode:Episode) =>{}
 
 }
 const EpisodeItem = (props:EpisodeItemProps) => {
-    const {episode} = props;
+    const {episode,onPress} = props;
   return (
-    <View style={{marginHorizontal:10,marginBottom:10}}>
+    <Pressable style={{marginHorizontal:10,marginBottom:10}} onPress={()=>onPress(episode)}>
         <View style={styles.row}>
             <Image style={styles.image} source={{uri:episode.poster}}/>
             <View style={styles.titleContainer}>
@@ -28,7 +23,7 @@ const EpisodeItem = (props:EpisodeItemProps) => {
             <Octicons name='download' size={24} color='white'/>
         </View>
       <Text style={styles.plot}> {episode.plot} </Text>
-    </View>
+    </Pressable>
   )
 }
 

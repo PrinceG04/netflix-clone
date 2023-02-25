@@ -8,6 +8,7 @@ import styles from './style';
 import { AntDesign, Entypo, Feather, FontAwesome, Ionicons, MaterialIcons, Octicons } from '@expo/vector-icons';
 import EpisodeItem from '../../components/EpisodeItem';
 import { FlatList } from 'react-native-gesture-handler';
+import VideoPlayer from '../../components/VideoPlayer';
 const firstEpisode = movie.seasons.items[0].episodes.items[0];
 const firstSeason = movie.seasons.items[0];
 const MovieDetailsScreen = () => {
@@ -16,16 +17,17 @@ const MovieDetailsScreen = () => {
     const seasonNames = movie.seasons.items.map((season) => season.name);
     // console.log(seasonNames);
     const [currentSeason,setCurrentSeason] = useState(firstSeason);
+    const [currentEpisode,setCurrentEpisode] = useState(firstSeason.episodes.items[0]);
     return (
         <View style={styles.container}>
-            <Image style={styles.image} source={{ uri: firstEpisode.poster }} />
-           
+            {/* <Image style={styles.image} source={{ uri: firstEpisode.poster }} /> */}
+            <VideoPlayer episode={currentEpisode}/>
 
             <FlatList
             data={currentSeason.episodes.items}
            
             renderItem = {({item}) =>(
-                <EpisodeItem episode={item}/>
+                <EpisodeItem episode={item} onPress={setCurrentEpisode}/>
             )}
 
                 ListHeaderComponent={(
